@@ -1,0 +1,15 @@
+server:
+  port: 7000  #1程序端口
+spring:
+  application:
+    name: service-feign #2指定程序名称
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.20.32.228:8761/eureka/  #3服务注册地址
+
+#在D版本的Spring Cloud之后
+feign:
+   hystrix:
+     enabled: true

@@ -1,0 +1,8 @@
+#开发环境
+server:
+  port: 8001
+  
+spring:
+  application:
+    name: hello #1该参数非常重要服务与服务之间相互调用一般都是根据这个name
+

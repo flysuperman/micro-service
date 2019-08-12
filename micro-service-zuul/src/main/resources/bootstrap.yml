@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        preferIpAddress: true
+        ip-address: 127.0.0.1
+        tags: version=1.0,author=datanet
+        healthCheckInterval: 5s
+        instanceId: ${spring.application.name}
+        enabled: false

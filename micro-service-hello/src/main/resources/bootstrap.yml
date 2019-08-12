@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    consul:
+      #consul的ip
+      host: 127.0.0.1
+      #consul的端口
+      port: 8500
+      discovery:
+        #多个服务可以使用相同的服务名称不设定的话, name 值同 Id 值
+        service-name: ${spring.application.name}
+        #唯一ID，在consul中不能重复
+        instance-id: ${spring.application.name}
+        #在注册时使用 consul IP, 而不是 hostname
+        prefer-ip-address: true
+        #注册到consul中的实例ip
+        ip-address: 127.0.0.1
+        # 启用服务发现
+        enabled: true
+        #启用服务注册
+        register: true
+        #服务停止是取消注册
+        deregister: true
+        #健康检查时间间隔
+        health-check-interval: 15s
+        #
+        health-check-timeout: 5s
+        #健康检查失败多长时间后，取消注册(Requires consul version 7.x or higher.)
+        health-check-critical-timeout: 1s
+         #下面示例的 tag map 是:  foo->bar 和 baz->baz
+        tags: a=b
+

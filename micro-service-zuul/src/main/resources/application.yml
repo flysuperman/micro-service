@@ -1,0 +1,27 @@
+server:
+  port: 8900
+spring:
+  application:
+    name: service-zuul
+
+zuul:
+  ignored-services: microservice-provider-user # 需要忽视的服务(不暴露，在外面配置后将不会被路由)
+  routes:
+  #当以/api-a/ 开头的请求都转发给service-ribbon服务
+  #http://localhost:8769//api-a/cm?name=3333 cm为service-ribbon服务 controller访问路径
+    api-a:  # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
+      path: /test/** # 想要映射到的路径(/test是自定义的前缀，和请求的服务里面的路径无关)
+      serviceId: hello  # Eureka中的serviceId,对于来自发现的服务
+    #当以/api-b/ 开头的请求都转发给service-feign服务
+    #http://localhost:8769//api-b/hi?name=3333 hi为service-feign服务 controller访问路径
+    api-b:
+      path: /api-b/**
+      serviceId: service-feign
+    api-c:
+      path: /api-c/**
+      url: www.baidu.com   #对于物理位置
+  MyFilter:
+    pre:
+     disable: true   #用于过滤器的启用和停用
+
+      
